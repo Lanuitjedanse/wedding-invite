@@ -28,15 +28,21 @@ const state = ref({
 });
 
 const items = ref(["+0", "+1", "+2", "+3", "+4"]);
-const steps = ref(props.steps);
 
 const toast = useToast();
 
-function onSubmit({ data }) {
+async function onSubmit({ data }) {
   toast.add({
     title: "Success",
     description: "The form has been submitted.",
     color: "success",
+  });
+
+  console.log("data", data);
+
+  await $fetch("/api/invitee", {
+    method: "POST",
+    body: data,
   });
 
   state.value = {
@@ -47,18 +53,21 @@ function onSubmit({ data }) {
     steps: [],
   };
 
-  participants.value.push(data);
+  const { invitees } = await $fetch("/api/invitees", {
+    method: "GET",
+  });
+  participants.value = invitees;
 }
 </script>
 
 <template>
   <UForm
-    :schema="v.safeParser(schema)"
+    :schema="schema"
     :state="state"
     class="p-4 space-y-4 w-full"
     @submit="onSubmit"
   >
-    <UFormField label="Email" name="email" class="grow">
+    <UFormField label="Email" name="email">
       <UInput v-model="state.email" />
     </UFormField>
 

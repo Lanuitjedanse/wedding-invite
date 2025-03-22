@@ -14,6 +14,6 @@ watchEffect(() => {
   <UTable
     :data="computedParticipants"
     :key="computedParticipants.length"
-    class="flex-1 min-h-120"
+    class="min-h-98"
   />
 </template>

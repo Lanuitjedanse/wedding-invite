@@ -1,10 +1,6 @@
 <script setup>
+defineProps({ steps: { type: Array, required: true } });
 const items = ref([
-  {
-    id: ETabs.EVENT_DETAILS,
-    label: "Event details",
-    icon: "line-md:iconify2-static",
-  },
   {
     id: ETabs.SUBSCRIBE,
     label: "Subscribe",
@@ -19,10 +15,10 @@ const items = ref([
 </script>
 
 <template>
-  <UTabs :items="items" class="flex flex-col">
+  <UTabs :items="items" class="flex flex-col min-h-content items-center">
     <template #content="{ item }">
-      <Form v-if="item.id === ETabs.SUBSCRIBE" />
-      <Stepper v-if="item.id === ETabs.EVENT_DETAILS" />
+      <Form v-if="item.id === ETabs.SUBSCRIBE" :steps="steps" />
+      <InviteesList v-if="item.id === ETabs.INVITEES_LIST" />
     </template>
   </UTabs>
 </template>

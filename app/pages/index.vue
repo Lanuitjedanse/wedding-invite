@@ -34,13 +34,12 @@ const steps = [
   },
 ];
 
-const list = ref([]);
+const { invitees } = await $fetch("/api/invitees", {
+  method: "GET",
+});
 
-const handleInvitee = (data) => {
-  list.value.push(data);
-
-  console.log(list.value);
-};
+const { participants } = useParticipants();
+participants.value = invitees;
 </script>
 
 <template>
@@ -54,9 +53,6 @@ const handleInvitee = (data) => {
       <Stepper :steps="steps"></Stepper>
     </UContainer>
 
-    <div class="h-full w-screen flex">
-      <Form class="" :steps="steps" @submit="handleInvitee" />
-    </div>
-    <InviteesList />
+    <Tabs :steps="steps" />
   </div>
 </template>
