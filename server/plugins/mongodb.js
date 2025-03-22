@@ -1,13 +1,10 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
 
-export default defineNitroPlugin(async () => {
+export default defineNitroPlugin(async (nitroApp) => {
   const env = useRuntimeConfig();
 
   // MongoDB Atlas URI
-  const url = env.private.mongoUri;
-
-  // Replace the placeholder with your Atlas connection string
-  const uri = "<connection string>";
+  const url = env.mongoUri;
 
   // Create a MongoClient with a MongoClientOptions object to set the Stable API version
   const client = new MongoClient(url, {
@@ -29,10 +26,9 @@ export default defineNitroPlugin(async () => {
         "Pinged your deployment. You successfully connected to MongoDB!"
       );
 
-      global.mongoClient = instance;
-    } finally {
-      // Ensures that the client will close when you finish/error
-      await client.close();
+      nitroApp.mongo = instance;
+    } catch (err) {
+      console.log("err in mongoDB connection", err);
     }
   }
   run().catch(console.dir);

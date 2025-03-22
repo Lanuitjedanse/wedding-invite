@@ -13,9 +13,7 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
   runtimeConfig: {
-    private: {
-      mongoUri: process.env.MONGO_URI,
-    },
+    mongoUri: process.env.MONGO_URI,
   },
 
   compatibilityDate: "2024-11-27",

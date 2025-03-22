@@ -1,7 +1,6 @@
 export default defineEventHandler(async (event) => {
   try {
-    // Ensure the MongoDB client is connected
-    const client = await global.mongoClient.connect();
+    const { mongo: client } = useNitroApp();
 
     // Check if the MongoDB client is initialized and connected
     if (!client) {
