@@ -1,7 +1,6 @@
 export default defineEventHandler(async () => {
   try {
     const { mongo: client } = useNitroApp();
-    console.log(client);
 
     // Check if the client is defined (it should be initialized globally)
     if (!client) {

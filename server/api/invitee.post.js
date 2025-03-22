@@ -2,8 +2,6 @@ export default defineEventHandler(async (event) => {
   try {
     const { mongo: client } = useNitroApp();
 
-    console.log("Mongo URI:", process.env.NUXT_PRIVATE_MONGO_URI);
-
     // Check if the MongoDB client is initialized and connected
     if (!client) {
       throw new Error("MongoDB client is not initialized.");
