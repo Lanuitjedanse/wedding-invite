@@ -18,10 +18,6 @@ export default defineEventHandler(async (event) => {
     }
   } catch (error) {
     console.error("Error fetching invitees:", error);
-    return createError({
-      statusCode: 500,
-      statusMessage: "Internal Server Error",
-      message: error.message,
-    });
+    return { invitees: [] };
   }
 });
