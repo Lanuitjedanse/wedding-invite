@@ -5,9 +5,16 @@ export default defineEventHandler(async (event) => {
     const invitees = await db.collection("invitees").find({}).toArray();
 
     if (invitees && invitees.length > 0) {
-      return { invitees }; // Return the invitees if found
+      const formattedInvites = invitees.map((item) => ({
+        fullName: `${item.firstName} ${item.lastName}`,
+        steps: item.steps,
+        additionalParticipants: item.additionalParticipants,
+        diet: item?.diet,
+      }));
+
+      return { invitees: formattedInvites };
     } else {
-      return { message: "No invitees found" }; // Return a message if no invitees found
+      return { invitees: [] };
     }
   } catch (error) {
     console.error("Error fetching invitees:", error);

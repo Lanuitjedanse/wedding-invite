@@ -1,5 +1,8 @@
 <script setup>
-defineProps({ steps: { type: Array, required: true } });
+defineProps({
+  steps: { type: Array, required: true },
+  diet: { type: Array, required: true },
+});
 const items = ref([
   {
     id: ETabs.SUBSCRIBE,
@@ -17,7 +20,7 @@ const items = ref([
 <template>
   <UTabs :items="items" class="flex flex-col min-h-content items-center">
     <template #content="{ item }">
-      <Form v-if="item.id === ETabs.SUBSCRIBE" :steps="steps" />
+      <Form v-if="item.id === ETabs.SUBSCRIBE" :steps="steps" :diet="diet" />
       <InviteesList v-if="item.id === ETabs.INVITEES_LIST" />
     </template>
   </UTabs>

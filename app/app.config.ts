@@ -4,7 +4,8 @@ export default defineAppConfig({
     colors: {
       primary: "pink",
       secondary: "indigo",
-      success: "blue",
+      success: "green",
+      info: "cyan",
       error: "red",
       neutral: "zinc",
     },
