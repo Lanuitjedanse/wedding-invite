@@ -1,5 +1,6 @@
 export default defineEventHandler(async (event) => {
   try {
+    const { db } = useNitroApp();
     // Extract the request body which contains the newInvitee data
     const newInvitee = await readBody(event); // Extract the body of the request
 
