@@ -33,7 +33,7 @@ const columns = [
 
       return h(
         "div",
-        { class: "flex flex-col gap-1 items-center" },
+        { class: "flex flex-col gap-1 items-start" },
         values.map((item) =>
           h(
             UBadge,
