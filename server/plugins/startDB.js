@@ -12,21 +12,21 @@ export default defineNitroPlugin(async (nitroApp) => {
   });
 
   try {
-    // Connect the client to the server	(optional starting in v4.7)
-    await client.connect();
-    // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
-    console.log(
-      "Pinged your deployment. You successfully connected to MongoDB!"
-    );
+    if (!nitroApp?.mongo) {
+      await client.connect();
+      await client.db("admin").command({ ping: 1 });
+      const db = client.db("wedding");
 
-    const db = client.db("wedding");
+      console.log(
+        "Pinged your deployment. You successfully connected to MongoDB!"
+      );
 
-    nitroApp.mongo = client;
-    nitroApp.db = db;
+      nitroApp.mongo = client;
+      nitroApp.db = db;
 
-    return { client, db };
+      return { client, db };
+    }
   } catch (err) {
-    console.log(err);
+    console.log("Error when connecting to mongodb: ", err);
   }
 });
