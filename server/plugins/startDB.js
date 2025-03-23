@@ -24,11 +24,20 @@ export default defineNitroPlugin(async (nitroApp) => {
       nitroApp.mongo = client;
       nitroApp.db = db;
 
+      nitroApp.hooks.hook("close", async () => {
+        console.log("Closing database connection...");
+        await client.close();
+      });
+
       return { client, db };
     }
   } catch (err) {
     console.log("Error when connecting to mongodb: ", err);
-    nitroApp.mongo = "";
-    nitroApp.db = "";
+
+    if (nitroApp.mongo) {
+      await nitroApp.mongo.close();
+      nitroApp.mongo = "";
+      nitroApp.db = "";
+    }
   }
 });
