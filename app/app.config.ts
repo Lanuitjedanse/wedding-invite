@@ -17,6 +17,12 @@ export default defineAppConfig({
         root: "flex h-full items-center gap-2",
       },
     },
+    table: {
+      slots: {
+        th: "px-2 py-3.5 text-sm text-(--ui-text-highlighted) text-left rtl:text-right font-semibold [&:has([role=checkbox])]:pe-0",
+        td: "p-2 text-sm text-(--ui-text-muted) whitespace-nowrap [&:has([role=checkbox])]:pe-0",
+      },
+    },
     button: {
       defaultVariants: {
         // Set default button color to neutral
