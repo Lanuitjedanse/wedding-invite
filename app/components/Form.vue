@@ -82,7 +82,7 @@ const emptyForm = () => {
   <UForm
     :schema="schema"
     :state="state"
-    class="p-4 space-y-4 w-full"
+    class="space-y-4 w-full"
     @submit="onSubmit"
   >
     <UFormField label="Email" name="email">
