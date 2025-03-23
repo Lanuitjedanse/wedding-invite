@@ -28,5 +28,7 @@ export default defineNitroPlugin(async (nitroApp) => {
     }
   } catch (err) {
     console.log("Error when connecting to mongodb: ", err);
+    nitroApp.mongo = "";
+    nitroApp.db = "";
   }
 });
