@@ -21,7 +21,6 @@ const emit = defineEmits(["submit"]);
 const { participants } = useParticipants();
 
 const state = ref({
-  email: "",
   firstName: "",
   lastName: "",
   additionalParticipants: 0,
