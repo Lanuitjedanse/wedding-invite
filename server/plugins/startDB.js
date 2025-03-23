@@ -25,7 +25,7 @@ export default defineNitroPlugin(async (nitroApp) => {
     nitroApp.mongo = client;
     nitroApp.db = db;
 
-    return { client, db: client.db };
+    return { client, db };
   } catch (err) {
     console.log(err);
   }
