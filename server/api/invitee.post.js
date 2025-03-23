@@ -1,15 +1,5 @@
 export default defineEventHandler(async (event) => {
   try {
-    const { mongo: client } = useNitroApp();
-
-    // Check if the MongoDB client is initialized and connected
-    if (!client) {
-      throw new Error("MongoDB client is not initialized.");
-    }
-
-    // Connect to the database
-    const db = client.db("wedding");
-
     // Extract the request body which contains the newInvitee data
     const newInvitee = await readBody(event); // Extract the body of the request
 

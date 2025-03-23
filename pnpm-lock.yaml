@@ -20,6 +20,9 @@ dependencies:
   '@nuxt/ui':
     specifier: ^3.0.0
     version: 3.0.1(embla-carousel@8.5.2)(typescript@5.8.2)(vite@6.2.2)
+  dotenv:
+    specifier: ^16.4.7
+    version: 16.4.7
   mongodb:
     specifier: ^6.15.0
     version: 6.15.0

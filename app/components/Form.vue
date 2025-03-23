@@ -38,8 +38,6 @@ async function onSubmit({ data }) {
     color: "success",
   });
 
-  console.log("data", data);
-
   await $fetch("/api/invitee", {
     method: "POST",
     body: data,

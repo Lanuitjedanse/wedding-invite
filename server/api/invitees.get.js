@@ -1,14 +1,8 @@
-export default defineEventHandler(async () => {
+export default defineEventHandler(async (event) => {
   try {
-    const { mongo: client } = useNitroApp();
+    const { db } = useNitroApp();
 
-    // Check if the client is defined (it should be initialized globally)
-    if (!client) {
-      throw new Error("MongoDB client is not initialized.");
-    }
-
-    // Perform a query operation, the client will throw if not connected
-    const db = client.db("wedding");
+    console.log("db", db);
     const invitees = await db.collection("invitees").find({}).toArray();
 
     if (invitees && invitees.length > 0) {
