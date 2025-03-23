@@ -21,10 +21,7 @@ const active = ref(0);
         <div
           class="p-4 w-full h-full flex flex-col justify-center xl:w-32 items-center"
         >
-          <NuxtImg
-            :src="`images/${item.id}.png`"
-            class="w-full md:w-92 object-cover"
-          />
+          <NuxtImg :src="`images/${item.id}.png`" class="w-92 object-cover" />
         </div>
       </template>
     </UStepper>
