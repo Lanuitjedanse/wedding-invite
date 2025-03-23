@@ -19,11 +19,11 @@ const active = ref(0);
     >
       <template #content="{ item }">
         <div
-          class="p-4 w-full h-full flex flex-col justify-center items-center"
+          class="p-4 w-full h-full flex flex-col justify-center xl:w-32 items-center"
         >
           <NuxtImg
             :src="`images/${item.id}.png`"
-            class="min-w-content object-cover"
+            class="md:w-98 xl:98 object-cover"
           />
         </div>
       </template>
