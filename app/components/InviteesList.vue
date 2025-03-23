@@ -12,6 +12,7 @@ const columns = [
   {
     accessorKey: "steps",
     header: "Steps",
+    maxSize: 2,
     cell: ({ row }) => {
       const color = {
         ceremony: "primary",
@@ -23,17 +24,21 @@ const columns = [
 
       const values = row.getValue("steps");
 
-      return values.map((item) => {
-        return h(
-          UBadge,
-          {
-            class: "capitalize mx-0.5 text-xs",
-            variant: "subtle",
-            color: color[item],
-          },
-          () => item
-        );
-      });
+      return h(
+        "div",
+        { class: "flex flex-col gap-1 max-w-content" }, // Ensure badges are spaced properly
+        values.map((item) =>
+          h(
+            UBadge,
+            {
+              class: "capitalize",
+              variant: "subtle",
+              color: color[item],
+            },
+            () => item
+          )
+        )
+      );
     },
   },
   {
@@ -59,7 +64,7 @@ const columns = [
   },
   {
     accessorKey: "additionalParticipants",
-    header: "Additional Participants",
+    header: "Guests",
     cell: ({ row }) => `+${row.getValue("additionalParticipants")}`,
   },
 ];
@@ -75,6 +80,6 @@ watchEffect(() => {
     :columns="columns"
     sticky
     :key="participants.length"
-    class="min-h-98"
+    class="max-h-98 min-h-64"
   />
 </template>

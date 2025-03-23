@@ -79,12 +79,7 @@ const emptyForm = () => {
 </script>
 
 <template>
-  <UForm
-    :schema="schema"
-    :state="state"
-    class="space-y-4 w-full"
-    @submit="onSubmit"
-  >
+  <UForm :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
     <UFormField label="Email" name="email">
       <UInput v-model="state.email" />
     </UFormField>

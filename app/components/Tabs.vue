@@ -18,9 +18,17 @@ const items = ref([
 </script>
 
 <template>
-  <UTabs :items="items" class="flex flex-col min-h-content items-center">
+  <UTabs
+    :items="items"
+    class="flex flex-col min-h-content py-2 justify-center items-center"
+  >
     <template #content="{ item }">
-      <Form v-if="item.id === ETabs.SUBSCRIBE" :steps="steps" :diet="diet" />
+      <Form
+        v-if="item.id === ETabs.SUBSCRIBE"
+        :steps="steps"
+        :diet="diet"
+        class="justify-self-center"
+      />
       <InviteesList v-if="item.id === ETabs.INVITEES_LIST" />
     </template>
   </UTabs>
