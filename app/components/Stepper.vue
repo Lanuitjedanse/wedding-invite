@@ -23,7 +23,7 @@ const active = ref(0);
         >
           <NuxtImg
             :src="`images/${item.id}.png`"
-            class="sm:w-3/7 xs:h-full xs:w-full object-cover"
+            class="w-full md:w-1/2 object-cover"
           />
         </div>
       </template>
