@@ -2,7 +2,6 @@ export default defineEventHandler(async (event) => {
   try {
     const { db } = useNitroApp();
 
-    console.log("db", db);
     const invitees = await db.collection("invitees").find({}).toArray();
 
     if (invitees && invitees.length > 0) {
