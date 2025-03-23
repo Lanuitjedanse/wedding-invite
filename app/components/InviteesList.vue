@@ -12,7 +12,6 @@ const columns = [
   {
     accessorKey: "steps",
     header: "Steps",
-    maxSize: 2,
     cell: ({ row }) => {
       const color = {
         ceremony: "primary",
@@ -22,17 +21,26 @@ const columns = [
         dinner: "warning",
       };
 
+      const icon = {
+        ceremony: "fluent-emoji-flat:wedding",
+        cocktail: "fluent-emoji-flat:bottle-with-popping-cork",
+        dinner: "fluent-emoji-flat:pot-of-food",
+        brunch: "fluent-emoji-flat:baguette-bread",
+        party: "fluent-emoji-flat:confetti-ball",
+      };
+
       const values = row.getValue("steps");
 
       return h(
         "div",
-        { class: "flex flex-col gap-1 max-w-content" }, // Ensure badges are spaced properly
+        { class: "flex flex-col gap-1 items-center" },
         values.map((item) =>
           h(
             UBadge,
             {
-              class: "capitalize w-auto",
+              class: "capitalize",
               variant: "subtle",
+              icon: icon[item],
               color: color[item],
             },
             () => item
