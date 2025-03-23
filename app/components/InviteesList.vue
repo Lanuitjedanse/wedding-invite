@@ -31,7 +31,7 @@ const columns = [
           h(
             UBadge,
             {
-              class: "capitalize",
+              class: "capitalize w-auto",
               variant: "subtle",
               color: color[item],
             },

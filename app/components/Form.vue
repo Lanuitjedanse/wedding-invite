@@ -2,7 +2,6 @@
 import * as v from "valibot";
 
 const schema = v.object({
-  email: v.pipe(v.string(), v.email("Invalid email")),
   diet: v.pipe(v.string(), v.minLength(1, "Select a diet")),
   firstName: v.pipe(v.string(), v.minLength(1, "Must be at least 1 character")),
   lastName: v.pipe(v.string(), v.minLength(1, "Must be at least 1 character")),
@@ -68,7 +67,6 @@ const getParticipants = async () => {
 
 const emptyForm = () => {
   state.value = {
-    email: "",
     firstName: "",
     lastName: "",
     additionalParticipants: "+0",
@@ -80,10 +78,6 @@ const emptyForm = () => {
 
 <template>
   <UForm :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
-    <UFormField label="Email" name="email">
-      <UInput v-model="state.email" />
-    </UFormField>
-
     <UFormField label="First name" name="firstName">
       <UInput v-model="state.firstName" type="firstName" />
     </UFormField>
