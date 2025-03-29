@@ -62,7 +62,7 @@ const allParticipants = computed(() => [
 <template>
   <UContainer>
     <div
-      class="grid grid-cols-3 gap-8 mx-auto w-max min-h-screen place-content-center"
+      class="xs:flex xs:flex-col xs:justify-center xs:items-center sm:grid sm:grid-cols-3 sm:gap-6 min-h-screen sm:my-auto sm:h-max sm:place-content-center"
     >
       <div
         v-for="participant in allParticipants"
